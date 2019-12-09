@@ -1,3 +1,8 @@
+#! /bin/bash
+# Script Written by Ben Maxwell
+# Credit attributed to Lab 1 & 2
+# Installs Docker and Jenkins
+
 sudo apt-get update
 
 sudo apt-get install \
