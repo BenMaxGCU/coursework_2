@@ -1,6 +1,6 @@
 pipeline {
     agent any 
-            stage {
+            stages {
                 stage('Clone Repo') {
                     steps {
                         checkout([$class: 'GitSCM',
