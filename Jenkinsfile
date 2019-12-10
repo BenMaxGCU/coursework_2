@@ -8,7 +8,7 @@ pipeline {
                                   doGenerateSubmoduleConfigurations: false,
                                   extensions: [],
                                   submoduleCfg: [],
-                                  userRemoteConfigs: [[url: 'https://github.com/BenMaxGCU/coursework_2.git']])
+                                  userRemoteConfigs: [[url: 'https://github.com/BenMaxGCU/coursework_2.git']]])
                     }
                 }
                 stage('Testing') {
