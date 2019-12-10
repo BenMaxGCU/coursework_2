@@ -32,10 +32,14 @@ sudo groupadd docker
 
 sudo usermod -aG docker $USER
 
+sudo apt-get update
+
 docker run --rm -d -u root --name jenkins_container \
 -p 8080:8080 \
 -v ~/jenkins-data:/var/jenkins_home \
 -v /var/run/docker.sock:/var/run/docker.sock \
 -v "$HOME":/home \
 jenkinsci/blueocean
+
+
 
