@@ -1,0 +1,27 @@
+- name: Open Port 80
+  hosts: localhost
+  connection: local
+
+  vars:
+    myResourceGroup: ansible
+    myVnet: ansible-node-vnet
+    mySubnet: ansible-node-subnet
+    myPublicIP: ansible-node-publicip
+    myNIC: anisble-node-nic
+    myNetworkSecurityGroup: ansible-node-nsg
+    myVM: ansible-node
+    mySSHkey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDWLmvdKwse8QdcFEFEoTepG38vjo6DIJOoHv4/HdpdzUulrtdrHeIHovLEsQ48tDQezATVsXqoJGvplzJ+Z1VMxT4YdFOBJbX7Q5/ipnDzu+1JY9Al/RRzTphZMB0pswqMn3GnOptYTiYX/1yXiZfgLmrcEasVyn1P93FWijKOa6hdjhTDbhEcNMVnyhvN70CvBBKZZuOh78B/KTAQxhi5/1lRNfRtgWo4JQdgnFVUMUXG9fXO+WC4Zr7Hzjss7lUoK24P6fNPSsHydFY32eIpNU2TRefuNPFNH6wmM+ZAm/CQLj3KG2/lzgqEOa0iakut8JCFa9AlfscT6B6S5AGh BenMaxGCU@master
+
+  tasks:
+
+  - name: Create Network Security Group that allows Docker Connection
+    azure_rm_securitygroup:
+        resource_group: "{{ myResourceGroup}}"
+        name: "{{ myNetworkSecurityGroup}}"
+        rules:
+          - name: Docker
+            protocol: Tcp
+            destination_port_range: 80
+            access: Allow
+            priority: 1220
+            direction: Inbound
