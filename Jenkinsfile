@@ -27,10 +27,9 @@ pipeline {
                 stage('Push to DockerHub') {
                     steps {
                         script {
-                            def app = docker.build("benmaxgcu/coursework_2")
-                            docker.withRegistry('https://registry.hub.docker.com', 'docker_hub_credentials') {
-                                app.push("${env.BUILD_NUMBER}")
-                                app.push("latest")
+                            dockerImage = docker.build('benmaxgcu/coursework2')
+                            docker.withRegistry('https://registry.hub.docker.com', 'benmaxgcu') {
+                                dockerImage.push()
                             }
                         }
                     }
