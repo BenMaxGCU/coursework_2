@@ -1,7 +1,4 @@
 pipeline {
-    environment {
-       registryCredential = 'benmaxgcu'
-    }
     agent any 
             stages {
                 stage('Clone Repo') {
@@ -31,7 +28,7 @@ pipeline {
                     steps {
                         script {
                             dockerImage = docker.build('benmaxgcu/coursework2')
-                            docker.withRegistry('', registryCredential) {
+                            docker.withRegistry('', 'dockerhub') {
                                 dockerImage.push()
                             }
                         }
