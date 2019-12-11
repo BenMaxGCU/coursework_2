@@ -27,7 +27,7 @@ pipeline {
                 stage('Push to DockerHub') {
                     steps {
                         script {
-                            dockerImage = docker.build('benmaxgcu/coursework2')
+                            dockerImage = docker.build('benmaxgcu/coursework2' + ':v2')
                             docker.withRegistry('', 'benmaxgcu') {
                                 dockerImage.push()
                             }
